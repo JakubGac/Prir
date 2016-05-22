@@ -5,6 +5,7 @@ public class Main {
 	public static void main(String []args) throws Exception {
 		
 		// N - liczba procesów potomnych
+		//dupa
 		int N = 5;
 		
 		// uruchamiamy wątki
