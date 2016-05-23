@@ -1,10 +1,10 @@
-package Prir;
+package Threads;
 
-public class myRun implements Runnable {
+public class ChildThread implements Runnable {
 	 
     private int id;
     
-    public myRun(int id) {
+    public ChildThread(int id) {
         this.id = id;
     }
  
