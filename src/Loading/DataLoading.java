@@ -34,11 +34,11 @@ public class DataLoading {
 			break;
 		case 1:
 			System.out.println("Podaj współczynniki a,b,c,d funkcji liniowej: ax + bxy + cy + d:");
-			String[] line = read.nextLine().split(" ");
-			function = new LinearFunction(Double.parseDouble(line[0]),Double.parseDouble(line[1]),Double.parseDouble(line[2]),Double.parseDouble(line[3])); 
+			function = new LinearFunction(read.nextLine().split(" ")); 
 			break;
 		case 2:
-			
+			System.out.println("Podaj współczynniki a,b,c,d,e,f,g funkcji kwadratowej: ax^2 + bx^2y + cxy + dxy^2 + ey^2 + fx^2y^2 + g:");
+			function = new QuadraticFunction(read.nextLine().split(" "));
 			break;
 		}
 		

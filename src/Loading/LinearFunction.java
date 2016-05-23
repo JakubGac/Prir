@@ -6,11 +6,11 @@ import java.util.List;
 public class LinearFunction implements Function {
 	private List<Double> coefficients = new ArrayList<Double>();
 	
-	public LinearFunction(double a, double b, double c, double d) {
-		coefficients.add(0, a);
-		coefficients.add(1, b);
-		coefficients.add(2, c);
-		coefficients.add(3, d);
+	public LinearFunction(String[] arguments) {
+		coefficients.add(0, Double.parseDouble(arguments[0]));
+		coefficients.add(1, Double.parseDouble(arguments[1]));
+		coefficients.add(2, Double.parseDouble(arguments[2]));
+		coefficients.add(3, Double.parseDouble(arguments[3]));
 	}
 	
 	@Override
