@@ -17,13 +17,13 @@ public class DataLoading {
 			"2 - funkcja kwadratowa\n"
 		);
 		
-		switch(read.nextInt()){
+		switch(Integer.parseInt(read.nextLine())){
 		case 0:
 			System.out.print(
 				"0 - sinus\n" +
 				"1 - cosinus\n"
 			);
-			switch(read.nextInt()){
+			switch(Integer.parseInt(read.nextLine())){
 			case 0:
 				function = new Sine();
 				break;
@@ -33,7 +33,9 @@ public class DataLoading {
 			}
 			break;
 		case 1:
-			
+			System.out.println("Podaj współczynniki a,b,c,d funkcji liniowej: ax + bxy + cy + d:");
+			String[] line = read.nextLine().split(" ");
+			function = new LinearFunction(Double.parseDouble(line[0]),Double.parseDouble(line[1]),Double.parseDouble(line[2]),Double.parseDouble(line[3])); 
 			break;
 		case 2:
 			
