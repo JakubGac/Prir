@@ -35,4 +35,5 @@ public class LetterL extends Area{
     public int getC() {
         return c;
     }
+
 }

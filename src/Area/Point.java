@@ -7,5 +7,4 @@ public class Point {
 
     private int value;
 
-
 }

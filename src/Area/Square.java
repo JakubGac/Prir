@@ -16,4 +16,5 @@ public class Square extends Area {
     public int getA() {
         return a;
     }
+
 }

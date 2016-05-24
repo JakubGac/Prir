@@ -33,6 +33,7 @@ public abstract class Area {
         }
 
         return points;
+
     }
 
     private void partialy_fill(int a, int b) {
