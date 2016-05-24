@@ -1,10 +1,17 @@
 package Loading;
 
 import java.util.Scanner;
+import Area.Area;
+import Area.Square;
+import Area.Rectangle;
+import Area.LetterL;
+import Area.LetterT;
 
 public class DataLoading {
 	private Scanner read;
 	private Function function;
+	private Area area;
+	private String[] dimensions;
 	
 	public DataLoading(){
 		read = new Scanner(System.in);
@@ -30,6 +37,8 @@ public class DataLoading {
 			case 1:
 				function = new Cosine();	
 				break;
+			default:
+				System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");
 			}
 			break;
 		case 1:
@@ -40,8 +49,69 @@ public class DataLoading {
 			System.out.println("Podaj współczynniki a,b,c,d,e,f,g funkcji kwadratowej: ax^2 + bx^2y + cxy + dxy^2 + ey^2 + fx^2y^2 + g:");
 			function = new QuadraticFunction(read.nextLine().split(" "));
 			break;
+		default:
+			System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");	
 		}
 		
 		return function;
 	}
+
+	public Area AreaLoading(){
+		System.out.print("Wybierz kształt rozpatrywanego obszaru:\n"
+				+ "0 - kwadrat\n"
+				+ "1 - prostokąt\n"
+				+ "2 - litera L\n"
+				+ "3 - litera T\n");
+		switch(Integer.parseInt(read.nextLine())){
+		case 0:
+			System.out.println("Podaj długość boku kwadratu:");
+			area = new Square(Integer.parseInt(read.nextLine()));
+			break;
+		case 1:
+			System.out.println("Podaj długości boków prostokąta:");
+			area = new Rectangle(Integer.parseInt(read.nextLine()), Integer.parseInt(read.nextLine()));
+			break;
+		case 2:
+			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c oraz d:\n" +
+			"	\u2665 \u2665 \u2665\n" +
+			"	\u2665 \u2665 \u2665 c\n" +
+			"      a \u2665 \u2665 \u2665   d\n" +
+			"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
+			"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
+			"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
+			"	     b \n"); 
+			dimensions = read.nextLine().split(" ");
+			if( (Integer.parseInt(dimensions[1]) - Integer.parseInt(dimensions[3]) < 1) || 
+					((Integer.parseInt(dimensions[0]) - Integer.parseInt(dimensions[2]) < 1)) ) {
+				System.out.println("Błędne wymiary!\n");
+				System.exit(1);
+			}
+			area = new LetterL(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),
+					Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]));
+			break;
+		case 3:
+			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c oraz d:\n" +
+					"	     a\n" +
+					"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
+					"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
+					"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665 b\n" +
+					"	    \u2665 \u2665\n" +
+					"	    \u2665 \u2665 c\n" +
+					"	    \u2665 \u2665\n" +
+					"	     d\n"); 
+			dimensions = read.nextLine().split(" ");
+			if( (Integer.parseInt(dimensions[0]) - Integer.parseInt(dimensions[3]) < 2) || 
+				((Integer.parseInt(dimensions[1]) - Integer.parseInt(dimensions[2]) < 1)) ) {
+					System.out.println("Błędne wymiary!\n");
+					System.exit(1);
+			}
+			area = new LetterT(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),
+							Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]));
+			break;
+		default:
+			System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");
+		}
+		return area;
+	}
+	
 }
