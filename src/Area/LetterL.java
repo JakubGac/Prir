@@ -5,15 +5,34 @@ package Area;
  */
 public class LetterL extends Area{
 
-    public LetterL(int type, int h) {
+    private int a;
+    private int b;
+    private int c;
+    private int d;
 
-        this.type = type;
+    public LetterL(int a,int b, int c, int d, int h) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
         this.h = h;
+        super.fill_this_shit_up(this);
     }
 
-    public Point[] create(int... dimension) {
 
+    public int getB() {
+        return b;
+    }
 
-        return this.points;
+    public int getA() {
+        return a;
+    }
+
+    public int getD() {
+        return d;
+    }
+
+    public int getC() {
+        return c;
     }
 }

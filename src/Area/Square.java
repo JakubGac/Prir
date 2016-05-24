@@ -5,15 +5,15 @@ package Area;
  */
 public class Square extends Area {
 
-    public Square(int type, int h) {
+    private int a;
 
-        this.type = type;
+    public Square( int a, int h) {
+        this.a = a;
         this.h = h;
+        super.fill_this_shit_up(this);
     }
 
-    public Point[] create(int... dimension) {
-
-
-        return this.points;
+    public int getA() {
+        return a;
     }
 }

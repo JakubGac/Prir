@@ -5,18 +5,22 @@ package Area;
  */
 public class Rectangle extends Area {
 
-    public Rectangle(int type, int h) {
+    private int a;
+    private int b;
 
-        this.type = type;
+    public Rectangle(int a, int b, int h) {
+        this.a = a;
+        this.b = b;
         this.h = h;
+        super.fill_this_shit_up(this);
     }
 
-
-    public Point[] create(int... dimension) {
-        super.dupa();
-
-        return this.points;
+    public int getA() {
+        return a;
     }
 
+    public int getB() {
+        return b;
+    }
 
 }
