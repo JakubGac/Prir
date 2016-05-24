@@ -64,15 +64,17 @@ public class DataLoading {
 				+ "3 - litera T\n");
 		switch(Integer.parseInt(read.nextLine())){
 		case 0:
-			System.out.println("Podaj długość boku kwadratu:");
-			area = new Square(Integer.parseInt(read.nextLine()));
+			System.out.println("Podaj długość boku kwadratu oraz odległość między punktami:");
+			dimensions = read.nextLine().split(" ");
+			area = new Square(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]));
 			break;
 		case 1:
-			System.out.println("Podaj długości boków prostokąta:");
-			area = new Rectangle(Integer.parseInt(read.nextLine()), Integer.parseInt(read.nextLine()));
+			System.out.println("Podaj długości boków prostokąta oraz odległośc między punktami:");
+			dimensions = read.nextLine().split(" ");
+			area = new Rectangle(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),Integer.parseInt(dimensions[2]));
 			break;
 		case 2:
-			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c oraz d:\n" +
+			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c, d oraz odległośc między punktami:\n" +
 			"	\u2665 \u2665 \u2665\n" +
 			"	\u2665 \u2665 \u2665 c\n" +
 			"      a \u2665 \u2665 \u2665   d\n" +
@@ -87,10 +89,10 @@ public class DataLoading {
 				System.exit(1);
 			}
 			area = new LetterL(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),
-					Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]));
+					Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]), Integer.parseInt(dimensions[4]));
 			break;
 		case 3:
-			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c oraz d:\n" +
+			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, b, c,d oraz odległość między punktami:\n" +
 					"	     a\n" +
 					"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
 					"	\u2665 \u2665 \u2665 \u2665 \u2665 \u2665\n" +
@@ -106,7 +108,7 @@ public class DataLoading {
 					System.exit(1);
 			}
 			area = new LetterT(Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),
-							Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]));
+							Integer.parseInt(dimensions[2]), Integer.parseInt(dimensions[3]), Integer.parseInt(dimensions[4]));
 			break;
 		default:
 			System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");
