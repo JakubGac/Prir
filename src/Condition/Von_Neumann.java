@@ -5,4 +5,10 @@ package Condition;
  */
 public class Von_Neumann implements Condition {
 
+	@Override
+	public int getValue() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

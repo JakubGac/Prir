@@ -5,4 +5,6 @@ package Condition;
  */
 public interface Condition {
 
+	public int getValue();
+	
 }
