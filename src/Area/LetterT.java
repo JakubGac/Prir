@@ -38,6 +38,22 @@ public class LetterT extends Area {
         return c;
     }
 
+    public void fill_edges(Point[][] points) {
+        int e = b - c;
+        int f = (a-d)/2;
 
+        for (int i = 0; i < a; i++) {
+            for (int j = 0; j < b; j++) {
+                if(j == 0 || (i == 0 && j < e) || (i == a - 1 && j < e) || (j == e - 1 && i <= f) || (j < e - 1 && i >= (a - f - 1)) ||
+                        ( i == f && j > e - 1) || (i == (a - f - 1) && j > e - 1)) {
+                    points[i][j].setIf_edge(true);
+                } else if ((i < f && j > e - 1) || (i > a - f - 1 && j > e - 1)) {
+                    points[i][j].setIf_edge(true);
+                    points[i][j].setValue(0);
+                }
+            }
+        }
+    }
 }
+
 
