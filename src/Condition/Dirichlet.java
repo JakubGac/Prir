@@ -10,19 +10,24 @@ public class Dirichlet implements Condition {
 	private int x;
 	private int y;
 	
-	public Dirichlet(){
-		IfX = false;
-		IfY = false;
+	public Dirichlet(String value){
+		if(value.charAt(1) == 'x' || value.charAt(1) == 'X'){
+			setX(Character.getNumericValue(value.charAt(2)));
+		} else {
+			setY(Character.getNumericValue(value.charAt(2)));
+		}
 	}
-	
-	public void setX (int value1){
+
+	private void setX (int value1){
 		x = value1;
+		y = 99999;
 		IfX = true;
 		IfY = false;
 	}
 	
-	public void setY (Boolean value, int value1){
+	private void setY (int value1){
 		y = value1;
+		x = 99999;
 		IfX = true;
 		IfX = false;
 	}
@@ -42,5 +47,15 @@ public class Dirichlet implements Condition {
 	
 	public boolean getIfY(){
 		return IfY;
+	}
+
+	@Override
+	public String toString(){
+		if(x != 99999){
+			return Integer.toString(x);
+		} else {
+			return Integer.toString(y);
+		}
+		
 	}
 }
