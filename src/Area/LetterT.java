@@ -1,6 +1,8 @@
 package Area;
 
 
+import java.util.ArrayList;
+
 /**
  * Created by Dante on 24.05.2016.
  */
@@ -54,6 +56,17 @@ public class LetterT extends Area {
             }
         }
     }
+
+    @Override
+    public ArrayList get_sizes_array() {
+        ArrayList<Integer> al = new ArrayList();
+        al.add(a);
+        al.add(b);
+        al.add(c);
+        al.add(d);
+        return  al;
+    }
+
 }
 
 

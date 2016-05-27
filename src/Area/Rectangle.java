@@ -1,5 +1,7 @@
 package Area;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dante on 24.05.2016.
  */
@@ -31,6 +33,14 @@ public class Rectangle extends Area {
                 }
             }
         }
+    }
+
+    @Override
+    public ArrayList get_sizes_array() {
+        ArrayList<Integer> al = new ArrayList();
+        al.add(a);
+        al.add(b);
+        return  al;
     }
 
 }

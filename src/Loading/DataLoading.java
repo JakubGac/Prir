@@ -9,6 +9,7 @@ import Area.Rectangle;
 import Area.LetterL;
 import Area.LetterT;
 import Condition.*;
+import Matrix.Matrix;
 
 public class DataLoading {
 	private Scanner read;
@@ -72,12 +73,14 @@ public class DataLoading {
 			printSquare();
 			tmpArray = read.nextLine().split(" ");
 			area = new Square(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]));
+			Matrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 1:
 			System.out.println("Podaj długości boków prostokąta(wymiary a i b) oraz odległośc między punktami:");
 			printRectangle();
 			tmpArray = read.nextLine().split(" ");
 			area = new Rectangle(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]),Integer.parseInt(tmpArray[2]));
+			Matrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 2:
 			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, c, d, f oraz odległośc między punktami:\n");
@@ -90,6 +93,7 @@ public class DataLoading {
 			}
 			area = new LetterL(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]),
 					Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[3]), Integer.parseInt(tmpArray[4]));
+			Matrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 3:
 			System.out.print("Podaj wymiary zaznaczone na rysunku literami b,c,e, f oraz odległość między punktami:\n");
@@ -102,6 +106,7 @@ public class DataLoading {
 			}
 			area = new LetterT(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]),
 							Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[3]), Integer.parseInt(tmpArray[4]));
+			Matrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		default:
 			System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");

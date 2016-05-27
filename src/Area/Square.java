@@ -1,5 +1,7 @@
 package Area;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dante on 24.05.2016.
  */
@@ -17,6 +19,7 @@ public class Square extends Area {
         return a;
     }
 
+    @Override
     public void fill_edges(Point[][] points) {
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < a; j++) {
@@ -26,4 +29,12 @@ public class Square extends Area {
             }
         }
     }
+
+    @Override
+    public ArrayList get_sizes_array() {
+        ArrayList<Integer> al = new ArrayList();
+        al.add(a);
+        return  al;
+    }
+
 }

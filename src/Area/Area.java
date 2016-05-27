@@ -1,5 +1,7 @@
 package Area;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dante on 23.05.2016.
  */
@@ -9,7 +11,12 @@ public abstract class Area {
     protected Point[][] points;
 
     protected abstract void fill_edges(Point[][] points);
+    public abstract ArrayList get_sizes_array();
 
+
+    public int getH() {
+        return this.h;
+    }
 
     protected Point[][] fill_this_shit_up(Area area) {
 
@@ -45,6 +52,10 @@ public abstract class Area {
                 points[i][j] = new Point();
             }
         }
+    }
+
+    public Point getPoint(int i, int j) {
+        return points[i][j];
     }
 
 }

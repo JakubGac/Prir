@@ -1,5 +1,7 @@
 package Area;
 
+import java.util.ArrayList;
+
 /**
  * Created by Dante on 24.05.2016.
  */
@@ -51,4 +53,15 @@ public class LetterL extends Area{
             }
         }
     }
+
+    @Override
+    public ArrayList get_sizes_array() {
+        ArrayList<Integer> all = new ArrayList();
+        all.add(a);
+        all.add(b);
+        all.add(c);
+        all.add(d);
+        return  all;
+    }
+
 }
