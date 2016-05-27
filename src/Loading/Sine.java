@@ -9,4 +9,8 @@ public class Sine implements Function {
 		return Math.sin(value1 + value2);
 	}
 	
+	@Override
+	public String toString(){
+		return "I'm cosine baby\n";
+	}
 }

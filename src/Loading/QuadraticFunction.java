@@ -23,5 +23,10 @@ public class QuadraticFunction implements Function {
 				(coefficients.get(2) * value1 * value2) + (coefficients.get(3) * value1 * Math.pow(value2, 2)) + 
 				(coefficients.get(4) * Math.pow(value2, 2)) + (coefficients.get(5) * Math.pow(value1, 2) * Math.pow(value2, 2)) + coefficients.get(6); 
 	}
+	
+	@Override
+	public String toString(){
+		return "I'm quadratic function baby\n";
+	}
 
 }

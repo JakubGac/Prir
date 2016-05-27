@@ -19,4 +19,9 @@ public class LinearFunction implements Function {
 				(coefficients.get(1) * value1 * value2) +
 				(coefficients.get(2) * value2) + coefficients.get(3);
 	}
+	
+	@Override
+	public String toString(){
+		return "I'm linear function baby\n";
+	}
 }
