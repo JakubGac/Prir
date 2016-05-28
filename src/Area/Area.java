@@ -7,14 +7,14 @@ import java.util.ArrayList;
  */
 public abstract class Area {
 
-    protected int h;
+    protected double h;
     protected Point[][] points;
 
     protected abstract void fill_edges(Point[][] points);
     public abstract ArrayList get_sizes_array();
 
 
-    public int getH() {
+    public double getH() {
         return this.h;
     }
 
@@ -49,7 +49,7 @@ public abstract class Area {
     private void empty_fill(int a, int b) {
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
-                points[i][j] = new Point();
+                points[i][j] = new Point(i, j);
             }
         }
     }
