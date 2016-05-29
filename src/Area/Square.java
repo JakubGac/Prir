@@ -34,6 +34,7 @@ public class Square extends Area {
     public ArrayList<Integer> get_sizes_array() {
         ArrayList<Integer> al = new ArrayList<Integer>();
         al.add(a);
+        al.add(a);
         return  al;
     }
 
