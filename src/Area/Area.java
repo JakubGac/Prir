@@ -11,8 +11,8 @@ public abstract class Area {
     protected Point[][] points;
 
     protected abstract void fill_edges(Point[][] points);
-    public abstract ArrayList get_sizes_array();
-
+    
+    public abstract ArrayList<Integer> get_sizes_array();
 
     public double getH() {
         return this.h;
