@@ -15,7 +15,7 @@ public class Matrix {
         this.b_table = new Double[height];
     }
 
-    public Matrix(int height, int weight) {
+    public Matrix(int height, int width) {
         this.height = height;
         this.width = width;
         this.a_table = new Double[height][width];
@@ -35,5 +35,13 @@ public class Matrix {
 
     public void set_b_table(int a, double value) {
         b_table[a] = value;
+    }
+    
+    public int getHeight(){
+    	return height;
+    }
+    
+    public int getWidth(){
+    	return width;
     }
 }
