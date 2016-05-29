@@ -57,5 +57,4 @@ public abstract class Area {
     public Point getPoint(int i, int j) {
         return points[i][j];
     }
-
 }
