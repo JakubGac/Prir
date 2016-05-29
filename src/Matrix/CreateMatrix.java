@@ -13,15 +13,22 @@ public class CreateMatrix {
 
     public CreateMatrix() {
         this.x = new Point[size];
-        this.A = new Double[size][size];
-        this.B = new Double[size];
+        this.A = new Matrix(size, size);
+        this.B = new Matrix(size);
+        for(int i = 0; i < size; i++) {
+            for(int j = 0; j < size; j++) {
+                this.A.set_a_table(i, j, .0);
+            }
+        }
     }
 
     public void fill_matrix(Area area, Function function) {
 
-        int sizeA = (int)area.get_sizes_array().get(0);
-        int sizeB = (int)area.get_sizes_array().get(1);
+        int sizeA = area.get_sizes_array().get(0);
+        int sizeB = area.get_sizes_array().get(1);
         int k = 0;
+        int tmpX;
+        int tmpY;
 
         for(int i = 0; i < sizeA; i++) {
             for(int j = 0; j < sizeB; j++) {
@@ -34,7 +41,7 @@ public class CreateMatrix {
         if (k == 0) {System.out.println("podaj lepsze wymiary gupi uzytkowniku\n"); return;}
 
         for(int i = 0; i < k; i++) {
-            B[i] = function.get((double)x[i].getX(), (double)x[i].getY()) - 4/Math.pow(area.getH(), 2); //wypelniam macierz prawych stron danymi
+            B.set_b_table(i, function.get((double)x[i].getX(), (double)x[i].getY()));  //wypelniam macierz prawych stron danymi
         }
 
         for(int i = 0; i < k; i++) {
@@ -42,6 +49,11 @@ public class CreateMatrix {
 
             }
         }
+    }
+
+    private void check_index(int tmpX, int tmpY) {
+
+
     }
 
 
