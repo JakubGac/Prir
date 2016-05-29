@@ -10,11 +10,16 @@ public class Main {
 		// code for data loading
 		DataLoading data = new DataLoading();
 		// reading functions
-		data.FunctionLoading();
+		//data.FunctionLoading();
 		// reading area
 		data.AreaLoading();
 		// reading conditions
 		data.ConditionLoading();
 		// since this moment, reading is all done
+
+		// code for setting values to the border points
+		BorderPoints borderPoints = new BorderPoints();
+		// so, let's set them!
+		borderPoints.setValues(data.getArea(), data.getConditionsList());
 	}
 }
