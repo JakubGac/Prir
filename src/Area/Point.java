@@ -51,5 +51,10 @@ public class Point {
     public int getX() {
         return x;
     }
+    
+    @Override
+    public String toString(){
+    	return "x: " + x + " y: " + y;
+    }
 
 }
