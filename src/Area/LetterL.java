@@ -55,8 +55,8 @@ public class LetterL extends Area{
     }
 
     @Override
-    public ArrayList get_sizes_array() {
-        ArrayList<Integer> all = new ArrayList();
+    public ArrayList<Integer> get_sizes_array() {
+        ArrayList<Integer> all = new ArrayList<Integer>();
         all.add(a);
         all.add(b);
         all.add(c);

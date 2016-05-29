@@ -36,8 +36,8 @@ public class Rectangle extends Area {
     }
 
     @Override
-    public ArrayList get_sizes_array() {
-        ArrayList<Integer> al = new ArrayList();
+    public ArrayList<Integer> get_sizes_array() {
+        ArrayList<Integer> al = new ArrayList<Integer>();
         al.add(a);
         al.add(b);
         return  al;

@@ -53,6 +53,11 @@ public class Point {
     public int getX() {
         return x;
     }
+    
+    @Override
+    public String toString(){
+    	return "x: " + x + " y: " + y;
+    }
 
     public boolean if_value_set() {
         return false ? this.value == .0 : true;
