@@ -44,8 +44,4 @@ public class My_Matrix {
     public int getWidth(){
     	return width;
     }
-    
-    public Double[][] get_full_a_table(){
-    	return a_table;
-    }
 }
