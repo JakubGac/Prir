@@ -5,7 +5,7 @@ import Condition.*;
  */
 public class Point {
 
-    private int value;
+    private double value;
     private Condition condition;
     private boolean if_edge;
     private int x;
@@ -18,9 +18,11 @@ public class Point {
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
+        this.if_edge = false;
+        this.value = .0;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -36,7 +38,7 @@ public class Point {
         this.condition = condition;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 
@@ -52,4 +54,7 @@ public class Point {
         return x;
     }
 
+    public boolean if_value_set() {
+        return false ? this.value == .0 : true;
+    }
 }
