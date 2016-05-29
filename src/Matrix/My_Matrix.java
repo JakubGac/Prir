@@ -36,4 +36,16 @@ public class My_Matrix {
     public void set_b_table(int a, double value) {
         b_table[a] = value;
     }
+    
+    public int getHeight(){
+    	return height;
+    }
+    
+    public int getWidth(){
+    	return width;
+    }
+    
+    public Double[][] get_full_a_table(){
+    	return a_table;
+    }
 }
