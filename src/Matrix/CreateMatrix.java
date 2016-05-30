@@ -1,7 +1,6 @@
 package Matrix;
 import Area.*;
 import Loading.*;
-
 import java.util.HashMap;
 
 /**
@@ -10,14 +9,14 @@ import java.util.HashMap;
 public class CreateMatrix {
 
     private Point[] x;
-    private Matrix A;
-    private Matrix B;
+    private My_Matrix A;
+    private My_Matrix B;
     private static int size;
 
     public CreateMatrix() {
         this.x = new Point[size];
-        this.A = new Matrix(size, size);
-        this.B = new Matrix(size);
+        this.A = new My_Matrix(size, size);
+        this.B = new My_Matrix(size);
         for(int i = 0; i < size; i++) {
             for(int j = 0; j < size; j++) {
                 this.A.set_a_table(i, j, .0);
@@ -25,14 +24,14 @@ public class CreateMatrix {
         }
     }
 
-    public void fill_matrix(Area area, Function function) {
+    public void create_equations(Area area, Function function) {
 
         int sizeA = area.get_sizes_array().get(0);
         int sizeB = area.get_sizes_array().get(1);
-        Point[] indexes = new Point[6];
         int k = 0;
         int tmpX;
         int tmpY;
+        HashMap hm = new HashMap();
 
         for(int i = 0; i < sizeA; i++) {
             for(int j = 0; j < sizeB; j++) {
@@ -42,75 +41,74 @@ public class CreateMatrix {
             }
         }
 
-        if (k == 0) {System.out.println("podaj lepsze wymiary gupi uzytkowniku\n"); return;}
-
         for(int i = 0; i < k; i++) {
-            B.set_b_table(i, function.get((double)x[i].getX(), (double)x[i].getY()));  //wypelniam macierz prawych stron danymi
+            tmpX = x[i].getX();
+            tmpY = x[i].getY();
+
+            B.set_b_table(i, function.get((double)tmpX, (double)tmpY));
+
+            moja_fun(i,  tmpX, tmpY, area, hm); // budujemy haszmape
+            fill_A(i, area, hm);                //wypelniamy finalnie macierz wspolczynnikow
         }
+    }
 
-        int a_counter = 0;
+    private void fill_A(int i, Area area, HashMap hm) {
 
-        while(a_counter != Math.pow(k, 2)) {
-            for (int i = 0; i < k; i++) {
-                for (int j = 0; j < k; j++) {
-                    tmpX = x[i].getX();
-                    tmpY = x[i].getY();
-                    int main_index = find_index(tmpX, tmpY, k);
-                    if( main_index != -1) {
-                        A.set_a_table(main_index, j, -4.0);
-                        indexes = this.get_interesting_indexes(tmpX, tmpY, area);
-                        int other_index = find_matches(k, indexes);
-                        if(other_index != -1) {
-                            A.set_a_table(other_index, j, );
-                        } else {
-                            A.set_a_table(other_index, j, .0);
-                        }
-                    }
-
-                }
+        for(int n = 0; n < x.length; n++) {
+            if(hm.containsKey(x[n])) {
+                double val = (double)hm.get(x[n]);
+                A.set_a_table(n, i, val * 1/Math.pow(area.getH(), 2));
+            } else {
+                System.out.println("znowu cos sie zjebalo :( \n");
+                return;
             }
         }
     }
 
-    private void check_index(int tmpX, int tmpY) {
+    private void moja_fun(int i, int tmpX, int tmpY,  Area area, HashMap hm) {
 
-    }
-
-    private Point[] get_interesting_indexes(int tmpX, int tmpY, Area area) { //wypelnia tablice okolicznymi punktami
-        Point[] indexes = new Point[6];
-
-        indexes[0] = area.getPoint(tmpX - 1, tmpY);
-        indexes[1] = area.getPoint(tmpX, tmpY);
-        indexes[2] = area.getPoint(tmpX + 1, tmpY);
-        indexes[3] = area.getPoint(tmpX, tmpY + 1);
-        indexes[4] = area.getPoint(tmpX, tmpY);
-        indexes[5] = area.getPoint(tmpX, tmpY - 1);
-
-        return indexes;
-    }
-
-    private int find_index(int tmpX, int tmpY, int k) {  //zwraca indeks dopasowanego punktu w tablicy niewiadomych x
-        for(int i = 0; i < k; i++) {
-            if(x[i].getX() == tmpX && x[i].getY() == tmpY) {
-                return i;
-            }
+        if (area.getPoint(tmpX - 1, tmpY).getIf_edge() == true) {
+            B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX - 1, tmpY).getValue() / Math.pow(area.getH(), 2));
+        } else {
+            hm.put(area.getPoint(tmpX - 1, tmpY), 1.0);
         }
-        return -1;
-    }
 
-    private int find_matches(int k, Point[] indexes ){ //zwraca indeks elementu dopasowego do "obszaru zainteresowan" w tablicy niewiadomych
+        hm.put(area.getPoint(tmpX, tmpY), -4.0);
 
-        for(int i = 0; i < k; i++) {
-            for(int j = 0 ; j < indexes.length; j++) {
-                if(indexes[j].getX() == x[i].getX() && indexes[j].getY() == x[i].getY()) {
-                    return i;
-                }
-            }
+        if (area.getPoint(tmpX + 1, tmpY).getIf_edge() == true) {
+            B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX + 1, tmpY).getValue() / Math.pow(area.getH(), 2));
+        } else {
+            hm.put(area.getPoint(tmpX + 1, tmpY), 1.0);
         }
-        return -1;
+
+        if (area.getPoint(tmpX, tmpY + 1).getIf_edge() == true) {
+            B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX, tmpY + 1).getValue() / Math.pow(area.getH(), 2));
+        } else {
+            hm.put(area.getPoint(tmpX, tmpY + 1), 1.0);
+        }
+
+        if (area.getPoint(tmpX, tmpY - 1).getIf_edge() == true) {
+            B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX, tmpY - 1).getValue() / Math.pow(area.getH(), 2));
+        } else {
+            hm.put(area.getPoint(tmpX, tmpY - 1), 1.0);
+        }
+
     }
 
     public static void setSize(int my_size) {
         size = my_size;
+    }
+
+    public void print_matrix_equation() {
+
+        for(int i = 0; i < size; i++) {
+            System.out.println("|");
+            for (int j = 0; j < size; j++) {
+                System.out.println(A.get_a_table(i, j) + " ");
+                System.out.println("*   |   ");
+                System.out.println(x[i]);
+            }
+            System.out.println("|\n");
+        }
     }
 }
