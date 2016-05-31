@@ -7,18 +7,18 @@ public class My_Matrix {
 
     private int height;
     private int width;
-    private Double[] b_table;
-    private Double[][] a_table;
+    private double[] b_table;
+    private double[][] a_table;
 
     public My_Matrix(int height) {
         this.height = height;
-        this.b_table = new Double[height];
+        this.b_table = new double[height];
     }
 
     public My_Matrix(int height, int width) {
         this.height = height;
         this.width = width;
-        this.a_table = new Double[height][width];
+        this.a_table = new double[height][width];
     }
 
     public double get_a_table(int a, int b) {
@@ -37,11 +37,19 @@ public class My_Matrix {
         b_table[a] = value;
     }
     
+    public void set_full_a_table(double[][] a_table){
+    	this.a_table = a_table;
+    }
+    
     public int getHeight(){
     	return height;
     }
     
     public int getWidth(){
     	return width;
+    }
+    
+    public double[][] get_full_a_table(){
+    	return a_table;
     }
 }
