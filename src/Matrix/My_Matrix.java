@@ -1,14 +1,15 @@
 package Matrix;
 
-/**
- * Created by Dante on 29.05.2016.
- */
+import Area.Point;
+
+
 public class My_Matrix {
 
     private int height;
     private int width;
     private double[] b_table;
     private double[][] a_table;
+    private Point[] x_table;
 
     public My_Matrix(int height) {
         this.height = height;
@@ -19,6 +20,19 @@ public class My_Matrix {
         this.height = height;
         this.width = width;
         this.a_table = new double[height][width];
+    }
+
+    public My_Matrix(int height, String string) {
+        this.height = height;
+        this.x_table = new Point[height];
+    }
+
+    public Point get_x_table(int a) {
+        return x_table[a];
+    }
+
+    public void set_x_table(int a, Point point) {
+        x_table[a] = point;
     }
 
     public double get_a_table(int a, int b) {

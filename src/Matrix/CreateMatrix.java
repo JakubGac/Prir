@@ -3,18 +3,16 @@ import Area.*;
 import Loading.*;
 import java.util.HashMap;
 
-/**
- * Created by Dante on 26.05.2016.
- */
+
 public class CreateMatrix {
 
-    private Point[] x;
+    private My_Matrix x;
     private My_Matrix A;
     private My_Matrix B;
     private static int size;
 
     public CreateMatrix() {
-        this.x = new Point[size];
+        this.x = new My_Matrix(size, "dupa");
         this.A = new My_Matrix(size, size);
         this.B = new My_Matrix(size);
         for(int i = 0; i < size; i++) {
@@ -31,19 +29,19 @@ public class CreateMatrix {
         int k = 0;
         int tmpX;
         int tmpY;
-        HashMap hm = new HashMap();
+        HashMap<Point, Double> hm = new HashMap<Point, Double>();
 
         for(int i = 0; i < sizeA; i++) {
             for(int j = 0; j < sizeB; j++) {
-                if(area.getPoint(i, j).getIf_edge() == true) { //wypelniam macierz x "niewiadomymi"
-                    x[k++] = area.getPoint(i, j);
+                if(area.getPoint(i, j).getIf_edge()) { //wypelniam macierz x "niewiadomymi"
+                    x.set_x_table(k++, area.getPoint(i, j));
                 }
             }
         }
 
         for(int i = 0; i < k; i++) {
-            tmpX = x[i].getX();
-            tmpY = x[i].getY();
+            tmpX = x.get_x_table(i).getX();
+            tmpY = x.get_x_table(i).getY();
 
             B.set_b_table(i, function.get((double)tmpX, (double)tmpY));
 
@@ -54,9 +52,9 @@ public class CreateMatrix {
 
     private void fill_A(int i, Area area, HashMap hm) {
 
-        for(int n = 0; n < x.length; n++) {
-            if(hm.containsKey(x[n])) {
-                double val = (double)hm.get(x[n]);
+        for(int n = 0; n < size; n++) {
+            if(hm.containsKey(x.get_x_table(n))) {
+                double val = (double)hm.get(x.get_x_table(n));
                 A.set_a_table(n, i, val * 1/Math.pow(area.getH(), 2));
             } else {
                 System.out.println("znowu cos sie zjebalo :( \n");
@@ -65,9 +63,10 @@ public class CreateMatrix {
         }
     }
 
+    @SuppressWarnings("unchecked")
     private void moja_fun(int i, int tmpX, int tmpY,  Area area, HashMap hm) {
 
-        if (area.getPoint(tmpX - 1, tmpY).getIf_edge() == true) {
+        if (area.getPoint(tmpX - 1, tmpY).getIf_edge()) {  // == true
             B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX - 1, tmpY).getValue() / Math.pow(area.getH(), 2));
         } else {
             hm.put(area.getPoint(tmpX - 1, tmpY), 1.0);
@@ -75,19 +74,19 @@ public class CreateMatrix {
 
         hm.put(area.getPoint(tmpX, tmpY), -4.0);
 
-        if (area.getPoint(tmpX + 1, tmpY).getIf_edge() == true) {
+        if (area.getPoint(tmpX + 1, tmpY).getIf_edge()) {
             B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX + 1, tmpY).getValue() / Math.pow(area.getH(), 2));
         } else {
             hm.put(area.getPoint(tmpX + 1, tmpY), 1.0);
         }
 
-        if (area.getPoint(tmpX, tmpY + 1).getIf_edge() == true) {
+        if (area.getPoint(tmpX, tmpY + 1).getIf_edge()) {
             B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX, tmpY + 1).getValue() / Math.pow(area.getH(), 2));
         } else {
             hm.put(area.getPoint(tmpX, tmpY + 1), 1.0);
         }
 
-        if (area.getPoint(tmpX, tmpY - 1).getIf_edge() == true) {
+        if (area.getPoint(tmpX, tmpY - 1).getIf_edge()) {
             B.set_b_table(i, B.get_b_table(i) - area.getPoint(tmpX, tmpY - 1).getValue() / Math.pow(area.getH(), 2));
         } else {
             hm.put(area.getPoint(tmpX, tmpY - 1), 1.0);
@@ -99,7 +98,7 @@ public class CreateMatrix {
         size = my_size;
     }
 
-    public void print_matrix_equation() {
+   /* public void print_matrix_equation() {
 
         for(int i = 0; i < size; i++) {
             System.out.println("|");
@@ -110,5 +109,5 @@ public class CreateMatrix {
             }
             System.out.println("|\n");
         }
-    }
+    }*/
 }
