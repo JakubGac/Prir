@@ -98,6 +98,19 @@ public class CreateMatrix {
         size = my_size;
     }
 
+    public My_Matrix get_matrix(char c) {
+        if(c == 'a') {
+            return A;
+        } else if(c == 'b') {
+            return B;
+        } else if(c == 'x') {
+            return x;
+        } else {
+            System.out.println("nie ma takiego bicia\n");
+            return null;
+        }
+    }
+
    /* public void print_matrix_equation() {
 
         for(int i = 0; i < size; i++) {
