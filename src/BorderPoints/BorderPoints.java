@@ -28,7 +28,6 @@ public class BorderPoints {
         } else {
         	setLetterT(area);
         }
-		wypisz(area);
 	}
 	
 	private void setSquareOrRectangle(Area area){
@@ -103,15 +102,5 @@ public class BorderPoints {
 			area.getPoint(areaDimensions.get(0) - areaDimensions.get(2) -1, i).setValue((double)conditions.get(3).getValue());
 		}
 			
-	}
-	
-	private void wypisz(Area area){
-		for(int i=0 ; i < areaDimensions.get(0) ; i++){
-			for(int j=0 ; j < areaDimensions.get(1) ; j++){
-				//System.out.print(area.getPoint(i, j) + " value: " + area.getPoint(i, j).getValue() + " ");
-				System.out.print(area.getPoint(i, j).getValue() + " ");
-			}
-			System.out.println();
-		}
 	}
 }
