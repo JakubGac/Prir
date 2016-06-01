@@ -86,13 +86,13 @@ public class DataLoading {
 			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, c, d, f oraz odległośc między punktami:\n");
 			printLetterL();
 			tmpArray = read.nextLine().split(" ");
-			if( (Integer.parseInt(tmpArray[1]) - Integer.parseInt(tmpArray[3]) < 1) || 
-					((Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[2]) < 1)) ) {
+			if( (Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[1]) < 1) || 
+					((Integer.parseInt(tmpArray[3]) - Integer.parseInt(tmpArray[2]) < 1)) ) {
 				System.out.println("Błędne wymiary!\n");
 				System.exit(1);
 			}
-			area = new LetterL(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]),
-					Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[3]), Integer.parseInt(tmpArray[4]));
+			area = new LetterL(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[3]),
+					Integer.parseInt(tmpArray[1]), Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[4]));
 			CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 3:
@@ -100,11 +100,12 @@ public class DataLoading {
 			printLetterT();
 			tmpArray = read.nextLine().split(" ");
 			if( (Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[3]) < 2) || 
-				((Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]) - Integer.parseInt(tmpArray[2]) < 1)) ) {
-					System.out.println("Błędne wymiary!\n");
+				((Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]) - Integer.parseInt(tmpArray[2]) < 1)) ||
+					(Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[3])) %2 != 0 ) {
+					System.out.println("Błędne wymiary szmato!\n");
 					System.exit(1);
 			}
-			area = new LetterT(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]),
+			area = new LetterT(Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[0]),
 							Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[3]), Integer.parseInt(tmpArray[4]));
 			CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
