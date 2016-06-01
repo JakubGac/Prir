@@ -13,13 +13,13 @@ public class CreateMatrix {
 
     public CreateMatrix() {
         this.x = new My_Matrix(size, "dupa");
-        this.A = new My_Matrix(size, size);
-        this.B = new My_Matrix(size);
-        for(int i = 0; i < size; i++) {
+        //this.A = new My_Matrix(size, size);
+        //this.B = new My_Matrix(size);
+        /*for(int i = 0; i < size; i++) {
             for(int j = 0; j < size; j++) {
                 this.A.set_a_table(i, j, .0);
             }
-        }
+        }*/
     }
 
     public void create_equations(Area area, Function function) {
@@ -37,7 +37,7 @@ public class CreateMatrix {
         for(int i = 0; i < sizeA; i++) {
             //System.out.println("tu gdzies\n");
             for(int j = 0; j < sizeB; j++) {
-               // System.out.println("czy tu? k = " + k + "\n");
+                System.out.println("czy tu? k = " + k + "\n");
                 if(!area.getPoint(i, j).getIf_edge()) { //wypelniam macierz x "niewiadomymi"
                     x.set_x_table(k, area.getPoint(i, j));
                     k++;
@@ -45,7 +45,10 @@ public class CreateMatrix {
             }
         }
 
-        print_matrix(A, B, x);
+        this.A = new My_Matrix(k, k);
+        this.B = new My_Matrix(k);
+
+        print_matrix(A, B, x, k);
         for(int i = 0; i < k; i++) {
             tmpX = x.get_x_table(i).getX();
             tmpY = x.get_x_table(i).getY();
@@ -57,17 +60,17 @@ public class CreateMatrix {
 
             moja_fun(i, tmpX, tmpY, area, hm); // budujemy haszmape
             System.out.println("w forze i i = " + i);
-            print_matrix(A, B, x);
-            fill_A(i, area, hm);//wypelniamy finalnie macierz wspolczynnikow
+            print_matrix(A, B, x, k);
+            fill_A(i, area, hm, k);//wypelniamy finalnie macierz wspolczynnikow
             hm.clear();
         }
-        print_matrix(A, B, x);
+        print_matrix(A, B, x, k);
     }
 
 
-    private void fill_A(int i, Area area, HashMap hm) {
+    private void fill_A(int i, Area area, HashMap hm, int k) {
 
-        for(int n = 0; n < size; n++) {
+        for(int n = 0; n < k; n++) {
             System.out.println("x.get_x_table(n) =  " + x.get_x_table(n) + " i n = " + n);
             if(hm.containsKey(x.get_x_table(n))) {
                 double val = (double)hm.get(x.get_x_table(n));
@@ -130,23 +133,23 @@ public class CreateMatrix {
     }
 
 
-    public void print_matrix(My_Matrix A, My_Matrix B, My_Matrix x) {
+    public void print_matrix(My_Matrix A, My_Matrix B, My_Matrix x, int k) {
         System.out.println("A : ");
-        for(int i = 0; i < A.getHeight(); i++) {
-            for(int j = 0; j < A.getWidth(); j++) {
+        for(int i = 0; i < k; i++) {
+            for(int j = 0; j < k; j++) {
                 System.out.print(A.get_a_table(i, j) + " ");
             }
             System.out.println();
         }
 
         System.out.println("B : ");
-        for(int i = 0; i < B.getHeight(); i++) {
+        for(int i = 0; i < k; i++) {
             System.out.print(B.get_b_table(i)+ " ");
         }
         System.out.println();
 
         System.out.println("x : ");
-        for(int i = 0; i < x.getHeight(); i++) {
+        for(int i = 0; i < k; i++) {
             System.out.print(x.get_x_table(i) + " ");
         }
         System.out.println();

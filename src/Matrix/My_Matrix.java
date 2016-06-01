@@ -3,6 +3,8 @@ package Matrix;
 import Area.Point;
 import com.sun.javafx.tk.DummyToolkit;
 
+import java.util.ArrayList;
+
 
 public class My_Matrix {
 
@@ -10,7 +12,7 @@ public class My_Matrix {
     private int width;
     private double[] b_table;
     private double[][] a_table;
-    private Point[] x_table;
+    private ArrayList<Point> x_table;
 
     public My_Matrix(int height) {
         this.height = height;
@@ -25,15 +27,15 @@ public class My_Matrix {
 
     public My_Matrix(int height, String string) {
         this.height = height;
-        this.x_table = new Point[height];
+        this.x_table = new ArrayList();
     }
 
     public Point get_x_table(int a) {
-        return x_table[a];
+        return x_table.get(a);
     }
 
-    public void set_x_table(int a, Point point) {
-        x_table[a] = point;
+    public void set_x_table( int a, Point point) {
+        x_table.add(a, point);
     }
 
     public double get_a_table(int a, int b) {
