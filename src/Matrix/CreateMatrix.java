@@ -26,39 +26,56 @@ public class CreateMatrix {
 
         int sizeA = area.get_sizes_array().get(0);
         int sizeB = area.get_sizes_array().get(1);
+        System.out.println("sizea = "+ sizeA);
+        System.out.println("sizeb = " + sizeB);
+        //print_matrix(A, B, x);
         int k = 0;
         int tmpX;
         int tmpY;
         HashMap<Point, Double> hm = new HashMap<Point, Double>();
 
         for(int i = 0; i < sizeA; i++) {
+            //System.out.println("tu gdzies\n");
             for(int j = 0; j < sizeB; j++) {
-                if(area.getPoint(i, j).getIf_edge()) { //wypelniam macierz x "niewiadomymi"
-                    x.set_x_table(k++, area.getPoint(i, j));
+               // System.out.println("czy tu? k = " + k + "\n");
+                if(!area.getPoint(i, j).getIf_edge()) { //wypelniam macierz x "niewiadomymi"
+                    x.set_x_table(k, area.getPoint(i, j));
+                    k++;
                 }
             }
         }
 
+        print_matrix(A, B, x);
         for(int i = 0; i < k; i++) {
             tmpX = x.get_x_table(i).getX();
             tmpY = x.get_x_table(i).getY();
 
+            System.out.println("tmpx = "+ tmpX);
+            System.out.println("tmpy = " + tmpY);
+
             B.set_b_table(i, function.get((double)tmpX, (double)tmpY));
 
-            moja_fun(i,  tmpX, tmpY, area, hm); // budujemy haszmape
-            fill_A(i, area, hm);                //wypelniamy finalnie macierz wspolczynnikow
+            moja_fun(i, tmpX, tmpY, area, hm); // budujemy haszmape
+            System.out.println("w forze i i = " + i);
+            print_matrix(A, B, x);
+            fill_A(i, area, hm);//wypelniamy finalnie macierz wspolczynnikow
+            hm.clear();
         }
+        print_matrix(A, B, x);
     }
+
 
     private void fill_A(int i, Area area, HashMap hm) {
 
         for(int n = 0; n < size; n++) {
+            System.out.println("x.get_x_table(n) =  " + x.get_x_table(n) + " i n = " + n);
             if(hm.containsKey(x.get_x_table(n))) {
                 double val = (double)hm.get(x.get_x_table(n));
-                A.set_a_table(n, i, val * 1/Math.pow(area.getH(), 2));
+                System.out.println("val = " + val);
+                A.set_a_table(i, n, val * 1/Math.pow(area.getH(), 2));
             } else {
                 System.out.println("znowu cos sie zjebalo :( \n");
-                return;
+                continue;
             }
         }
     }
@@ -91,6 +108,7 @@ public class CreateMatrix {
         } else {
             hm.put(area.getPoint(tmpX, tmpY - 1), 1.0);
         }
+        System.out.println(hm);
 
     }
 
@@ -111,16 +129,26 @@ public class CreateMatrix {
         }
     }
 
-   /* public void print_matrix_equation() {
 
-        for(int i = 0; i < size; i++) {
-            System.out.println("|");
-            for (int j = 0; j < size; j++) {
-                System.out.println(A.get_a_table(i, j) + " ");
-                System.out.println("*   |   ");
-                System.out.println(x[i]);
+    public void print_matrix(My_Matrix A, My_Matrix B, My_Matrix x) {
+        System.out.println("A : ");
+        for(int i = 0; i < A.getHeight(); i++) {
+            for(int j = 0; j < A.getWidth(); j++) {
+                System.out.print(A.get_a_table(i, j) + " ");
             }
-            System.out.println("|\n");
+            System.out.println();
         }
-    }*/
+
+        System.out.println("B : ");
+        for(int i = 0; i < B.getHeight(); i++) {
+            System.out.print(B.get_b_table(i)+ " ");
+        }
+        System.out.println();
+
+        System.out.println("x : ");
+        for(int i = 0; i < x.getHeight(); i++) {
+            System.out.print(x.get_x_table(i) + " ");
+        }
+        System.out.println();
+    }
 }

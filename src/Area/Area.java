@@ -21,6 +21,7 @@ public abstract class Area {
     protected Point[][] fill_this_shit_up(Area area) {
 
         if(area instanceof Square) {
+            System.out.println("kwadrat widze w tym teczu\n");
             Square sq = (Square) area;
             points = new Point[sq.getA()][sq.getA()];
             this.empty_fill(sq.getA(), sq.getA());
@@ -30,16 +31,19 @@ public abstract class Area {
             Rectangle re = (Rectangle) area;
             points = new Point[re.getA()][re.getB()];
             this.empty_fill(re.getA(), re.getB());
+            re.fill_edges(points);
 
         } else if(area instanceof LetterL) {
             LetterL ll = (LetterL) area;
             points = new Point[ll.getA()][ll.getB()];
             this.empty_fill(ll.getA(), ll.getB());
+            ll.fill_edges(points);
 
         } else {
             LetterT lt = (LetterT) area;
             points = new Point[lt.getA()][lt.getB()];
             this.empty_fill(lt.getA(), lt.getB());
+            lt.fill_edges(points);
         }
 
         return points;

@@ -29,9 +29,9 @@ public class Main {
 		CreateMatrix createMatrix = new CreateMatrix();
 		// create_equations sie wywala
 		createMatrix.create_equations(data.getArea(), data.getFunction());
-		printMatrix(createMatrix.get_matrix('a'));
-		printMatrix(createMatrix.get_matrix('b'));
-		printMatrix(createMatrix.get_matrix('c'));
+		//printMatrix(createMatrix.get_matrix('a'));
+		//printMatrix(createMatrix.get_matrix('b'));
+		//printMatrix(createMatrix.get_matrix('c'));
 	}
 	
 	private static void printMatrix(My_Matrix macierz){

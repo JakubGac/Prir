@@ -11,9 +11,6 @@ public class Point {
     private int x;
     private int y;
 
-    public Point() {
-        this.if_edge = false;
-    }
 
     public Point(int x, int y) {
         this.x = x;

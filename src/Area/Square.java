@@ -2,9 +2,7 @@ package Area;
 
 import java.util.ArrayList;
 
-/**
- * Created by Dante on 24.05.2016.
- */
+
 public class Square extends Area {
 
     private int a;
@@ -32,7 +30,7 @@ public class Square extends Area {
 
     @Override
     public ArrayList<Integer> get_sizes_array() {
-        ArrayList<Integer> al = new ArrayList<Integer>();
+        ArrayList<Integer> al = new ArrayList<>();
         al.add(a);
         al.add(a);
         return  al;
