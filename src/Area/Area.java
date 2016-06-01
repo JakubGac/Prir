@@ -41,8 +41,8 @@ public abstract class Area {
 
         } else {
             LetterT lt = (LetterT) area;
-            points = new Point[lt.getB()][lt.getAll()];
-            this.empty_fill(lt.getB(), lt.getAll());
+            points = new Point[lt.getA()][lt.getB()];
+            this.empty_fill(lt.getA(), lt.getB());
             lt.fill_edges(points);
         }
 

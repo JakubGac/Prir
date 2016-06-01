@@ -8,19 +8,17 @@ import java.util.ArrayList;
  */
 public class LetterT extends Area {
 
+    private int a;
     private int b;
     private int c;
-    private int e;
-    private int f;
-    private int all;
+    private int d;
 
-    public LetterT(int b,int c, int e, int f, int h) {
+    public LetterT(int a,int b, int c, int d, int h) {
+        this.a = a;
         this.b = b;
         this.c = c;
-        this.e = e;
-        this.f = f;
+        this.d = d;
         this.h = h;
-        this.all = c + e;
         super.fill_this_shit_up(this);
     }
 
@@ -30,33 +28,29 @@ public class LetterT extends Area {
         return b;
     }
 
-    public int getAll() {
-        return all;
+    public int getA() {
+        return a;
     }
 
     public int getC() {
         return c;
     }
 
-    public int getE() {
-        return e;
-    }
-
-    public int getF() {
-        return f;
+    public int getD() {
+        return d;
     }
 
     public void fill_edges(Point[][] points) {
-        int all = c + e;
-        int d = (b - f )/ 2;
+        int g = (b - d )/ 2;
 
 
-        for (int i = 0; i < all; i++) {
+        for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
-                if(i == all - 1 || (i >= e && j == b - 1) || (i >= e && j == 0) || (i == e && j >= f + d) || (i == e && j < d) ||
-                        (j == f + d - 1 && i <= e) || (j == d && i <= e) || (i == 0 && j >= d && j < f + d)) {
+                System.out.println( " i = "+ i + " j = " + j);
+                if(i == a - 1 || (i >= c && j == b - 1) || (i >= c && j == 0) || (i == c && j >= d + g) || (i == c && j < g) ||
+                        (j == d + g - 1 && i <= c) || (j == g && i <= c) || (i == 0 && j >= g && j < d + g)) {
                     points[i][j].setIf_edge(true);
-                } else if ((i < e && j < d) || (i < e && j >= f + d)) {
+                } else if ((i < c && j < g) || (i < c && j >= g + d) ) {
                     points[i][j].setIf_edge(true);
                     points[i][j].setValue(0);
                 }
@@ -67,10 +61,10 @@ public class LetterT extends Area {
     @Override
     public ArrayList<Integer> get_sizes_array() {
         ArrayList<Integer> al = new ArrayList<Integer>();
+        al.add(a);
         al.add(b);
         al.add(c);
-        al.add(e);
-        al.add(f);
+        al.add(d);
         return  al;
     }
 
