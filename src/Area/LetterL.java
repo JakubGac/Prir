@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public class LetterL extends Area{
 
     private int a;
-    private int b;
+    private int f;
     private int c;
     private int d;
 
-    public LetterL(int a,int b, int c, int d, int h) {
+    public LetterL(int a,int f, int c, int d, int h) {
         this.a = a;
-        this.b = b;
+        this.f = f;
         this.c = c;
         this.d = d;
         this.h = h;
@@ -22,8 +22,8 @@ public class LetterL extends Area{
     }
 
 
-    public int getB() {
-        return b;
+    public int getF() {
+        return f;
     }
 
     public int getA() {
@@ -39,14 +39,14 @@ public class LetterL extends Area{
     }
 
     public void fill_edges(Point[][] points) {
-        int e = b - d;
-        //int f = a - c;
+        int e = a - c;
+        int b = f - d;
 
         for (int i = 0; i < a; i++) {
-            for (int j = 0; j < b; j++) {
-                if(i == 0 || (i == b  - 1 && j > c - 1) || (i == e - 1 && j < c) || (j == 0 && i < e) || (j == c && i >= e ) || j == a - 1 ) {
+            for (int j = 0; j < f; j++) {
+                if(i == 0 || j ==0 || ( j < b && i == a - 1) || (j == b - 1 && i >= e - 1) || (i == e - 1 && j >= b -1) || j == f - 1) {
                     points[i][j].setIf_edge(true); //ustawiamy flage brzegowosci na TRUE
-                } else if( i > e - 1 && j < c - 1) {
+                } else if(i > e - 1 && j > b -1) {
                     points[i][j].setIf_edge(true); // ustawiamy flage "dla porzadku" dla obszaru lezacego poza litera L
                     points[i][j].setValue(0);
                 }
@@ -58,7 +58,7 @@ public class LetterL extends Area{
     public ArrayList<Integer> get_sizes_array() {
         ArrayList<Integer> all = new ArrayList<Integer>();
         all.add(a);
-        all.add(b);
+        all.add(f);
         all.add(c);
         all.add(d);
         return  all;

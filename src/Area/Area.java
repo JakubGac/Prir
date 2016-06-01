@@ -35,14 +35,14 @@ public abstract class Area {
 
         } else if(area instanceof LetterL) {
             LetterL ll = (LetterL) area;
-            points = new Point[ll.getA()][ll.getB()];
-            this.empty_fill(ll.getA(), ll.getB());
+            points = new Point[ll.getA()][ll.getF()];
+            this.empty_fill(ll.getA(), ll.getF());
             ll.fill_edges(points);
 
         } else {
             LetterT lt = (LetterT) area;
-            points = new Point[lt.getA()][lt.getB()];
-            this.empty_fill(lt.getA(), lt.getB());
+            points = new Point[lt.getB()][lt.getAll()];
+            this.empty_fill(lt.getB(), lt.getAll());
             lt.fill_edges(points);
         }
 

@@ -47,6 +47,7 @@ public class CreateMatrix {
 
         this.A = new My_Matrix(k, k);
         this.B = new My_Matrix(k);
+        System.out.println(" k = "+ k);
 
         print_matrix(A, B, x, k);
         for(int i = 0; i < k; i++) {
