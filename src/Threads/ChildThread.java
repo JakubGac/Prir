@@ -10,12 +10,11 @@ public class ChildThread implements Runnable {
     private My_Matrix A;
     private My_Matrix B;
     private My_Matrix C;
-    private float result = 0.0f;
+    private double result = 0.0;
     
-    public ChildThread(int id, int row, int column, My_Matrix X, My_Matrix Y, My_Matrix Z) {
+    public ChildThread(int id, int row, My_Matrix X, My_Matrix Y, My_Matrix Z) {
         this.id = id;
         this.row = row;
-        this.column = column;
         this.A = X;
         this.B = Y;
         this.C = Z;
@@ -29,12 +28,12 @@ public class ChildThread implements Runnable {
     }
     
     private synchronized void zmien(){
-    	C.set_a_table(row, column, result);
+    	C.set_b_table(row, result);
     }
     
     private void sumuj(){
     	for(int i=0 ; i < A.getWidth() ; i++){
-    		result += A.get_a_table(row, i) * B.get_a_table(i, column);
+    		result += A.get_a_table(row, i) * B.get_b_table(i);
     	}
     }
 }
