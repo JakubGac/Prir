@@ -21,7 +21,6 @@ public abstract class Area {
     protected Point[][] fill_this_shit_up(Area area) {
 
         if(area instanceof Square) {
-            System.out.println("kwadrat widze w tym teczu\n");
             Square sq = (Square) area;
             points = new Point[sq.getA()][sq.getA()];
             this.empty_fill(sq.getA(), sq.getA());

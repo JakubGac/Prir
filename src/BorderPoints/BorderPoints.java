@@ -57,7 +57,7 @@ public class BorderPoints {
 			area.getPoint(i, areaDimensions.get(1) - areaDimensions.get(3) - 1).setValue((double)conditions.get(2).getValue());
 		}
 		// fourth condition
-		for(int i = areaDimensions.get(2) ; i < areaDimensions.get(1); i++ ){
+		for(int i = areaDimensions.get(1) - areaDimensions.get(3) ; i < areaDimensions.get(1); i++ ){
 			area.getPoint(areaDimensions.get(2), i).setValue((double)conditions.get(3).getValue());
 		}
 		// fifth condition

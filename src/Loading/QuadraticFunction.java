@@ -8,6 +8,10 @@ public class QuadraticFunction implements Function {
 	private List<Double> coefficients = new ArrayList<Double>();
 	
 	public QuadraticFunction(String[] arguments) {
+		if(arguments.length != 7){
+			System.out.println("Niepoprawna ilość danych.\n");
+			System.exit(1);
+		}
 		coefficients.add(0, Double.parseDouble(arguments[0]));
 		coefficients.add(1, Double.parseDouble(arguments[1]));
 		coefficients.add(2, Double.parseDouble(arguments[2]));

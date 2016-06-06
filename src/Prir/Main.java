@@ -3,7 +3,6 @@ package Prir;
 import BorderPoints.BorderPoints;
 import Loading.DataLoading;
 import Matrix.CreateMatrix;
-import Matrix.My_Matrix;
 import Threads.MainThread;
 
 public class Main {
@@ -27,12 +26,10 @@ public class Main {
 		
 		// now it's the time to create and fill up matrixes
 		CreateMatrix createMatrix = new CreateMatrix();
-		// create_equations sie wywala
 		createMatrix.create_equations(data.getArea(), data.getFunction());
 	
 		// code for counting results
 		MainThread mainThread = new MainThread();
 		mainThread.count(createMatrix.get_matrix('a'), createMatrix.get_matrix('b')); 
-		
 	}
 }

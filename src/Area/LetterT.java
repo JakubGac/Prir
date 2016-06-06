@@ -46,7 +46,6 @@ public class LetterT extends Area {
 
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < b; j++) {
-                System.out.println( " i = "+ i + " j = " + j);
                 if(i == a - 1 || (i >= c && j == b - 1) || (i >= c && j == 0) || (i == c && j >= d + g) || (i == c && j < g) ||
                         (j == d + g - 1 && i <= c) || (j == g && i <= c) || (i == 0 && j >= g && j < d + g)) {
                     points[i][j].setIf_edge(true);

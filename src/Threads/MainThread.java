@@ -52,7 +52,7 @@ public class MainThread {
 			threads[i].start();
 		}
 		
-		// usypiam program główny na sekunde aby mieć pewność, że wątki skończą
+		// I put to sleep main program for one second to ensure that the threads finish
 		try {
 			System.out.println("Main thread is snoring for one second ");
 			Thread.sleep(1000);
@@ -68,7 +68,7 @@ public class MainThread {
 	private void printMatrix(My_Matrix macierz){
 		System.out.println("");
 		for(int i=0 ; i < macierz.getHeight(); i++){
-			System.out.println(macierz.get_b_table(i) + " ");
+			System.out.println(i+1 + ". " + macierz.get_b_table(i) + " ");
 		}
 	}
 }

@@ -9,7 +9,6 @@ import Area.Rectangle;
 import Area.LetterL;
 import Area.LetterT;
 import Condition.*;
-import Matrix.*;
 
 public class DataLoading {
 	private Scanner read;
@@ -72,20 +71,30 @@ public class DataLoading {
 			System.out.println("Podaj długość boku kwadratu(wymiar a) oraz odległość między punktami:");
 			printSquare();
 			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 2){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			area = new Square(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]));
-			//CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 1:
 			System.out.println("Podaj długości boków prostokąta(wymiary a i b) oraz odległośc między punktami:");
 			printRectangle();
 			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 3){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			area = new Rectangle(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[1]),Integer.parseInt(tmpArray[2]));
-			//CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 2:
 			System.out.print("Podaj wymiary zaznaczone na rysunku literami a, c, d, f oraz odległośc między punktami:\n");
 			printLetterL();
 			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 5){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			if( (Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[1]) < 1) || 
 					((Integer.parseInt(tmpArray[3]) - Integer.parseInt(tmpArray[2]) < 1)) ) {
 				System.out.println("Błędne wymiary!\n");
@@ -93,21 +102,23 @@ public class DataLoading {
 			}
 			area = new LetterL(Integer.parseInt(tmpArray[0]), Integer.parseInt(tmpArray[3]),
 					Integer.parseInt(tmpArray[1]), Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[4]));
-			//CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		case 3:
 			System.out.print("Podaj wymiary zaznaczone na rysunku literami b,c,e, f oraz odległość między punktami:\n");
 			printLetterT();
 			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 5){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			if( (Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[3]) < 2) || 
 				((Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]) - Integer.parseInt(tmpArray[2]) < 1)) ||
 					(Integer.parseInt(tmpArray[0]) - Integer.parseInt(tmpArray[3])) %2 != 0 ) {
-					System.out.println("Błędne wymiary szmato!\n");
+					System.out.println("Błędne wymiary baby!\n");
 					System.exit(1);
 			}
 			area = new LetterT(Integer.parseInt(tmpArray[1]) + Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[0]),
 							Integer.parseInt(tmpArray[2]), Integer.parseInt(tmpArray[3]), Integer.parseInt(tmpArray[4]));
-			//CreateMatrix.setSize(Integer.parseInt(tmpArray[0]));
 			break;
 		default:
 			System.out.println("Wybrałeś nieprawidłową wartość. Musisz zacząć od nowa.");
@@ -121,24 +132,44 @@ public class DataLoading {
 					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
 					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
 			printSquare();
+			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 4){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			readConditions();
         } else if(area instanceof Rectangle){
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d\n" +
 					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
 					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
 			printRectangle();
+			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 4){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			readConditions();	
         } else if(area instanceof LetterL) {
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d, e, f\n" +
 					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
 					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
 			printLetterL();
+			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 6){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			readConditions();
         } else {
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d, e, f, g, h\n" +
 					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
 					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
 			printLetterT();
+			tmpArray = read.nextLine().split(" ");
+			if(tmpArray.length != 8){
+				System.out.println("Niepoprawna ilość danych.\n");
+				System.exit(1);
+			}
 			readConditions();
         }
 	}
@@ -156,7 +187,6 @@ public class DataLoading {
 	}
 	
 	private void readConditions(){
-		tmpArray = read.nextLine().split(" ");
 		conditions = new ArrayList<Condition>();
 		for(String condition: tmpArray){
 			if(condition.charAt(0) == 'd' || condition.charAt(0) == 'D'){

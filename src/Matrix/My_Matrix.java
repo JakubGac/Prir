@@ -1,7 +1,6 @@
 package Matrix;
 
 import Area.Point;
-import com.sun.javafx.tk.DummyToolkit;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class My_Matrix {
 
     public My_Matrix(int height, String string) {
         this.height = height;
-        this.x_table = new ArrayList();
+        this.x_table = new ArrayList<Point>();
     }
 
     public Point get_x_table(int a) {
@@ -69,6 +68,4 @@ public class My_Matrix {
     public double[][] get_full_a_table(){
     	return a_table;
     }
-
-
 }

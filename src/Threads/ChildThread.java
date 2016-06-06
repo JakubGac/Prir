@@ -6,7 +6,6 @@ public class ChildThread implements Runnable {
 	 
 	private int id;
     private int row;
-    private int column;
     private My_Matrix A;
     private My_Matrix B;
     private My_Matrix C;
@@ -23,15 +22,15 @@ public class ChildThread implements Runnable {
     @Override
     public void run() {
     	System.out.println("Working Thread: " + id);
-    	sumuj();
-    	zmien();
+    	count();
+    	changeValue();
     }
     
-    private synchronized void zmien(){
+    private synchronized void changeValue(){
     	C.set_b_table(row, result);
     }
     
-    private void sumuj(){
+    private void count(){
     	for(int i=0 ; i < A.getWidth() ; i++){
     		result += A.get_a_table(row, i) * B.get_b_table(i);
     	}
