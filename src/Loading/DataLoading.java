@@ -129,8 +129,7 @@ public class DataLoading {
 	public void ConditionLoading(){
 		if(area instanceof Square) {
 			System.out.println("Podaj warunki brzegowe dla boków a, b, c, d\n" +
-					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
-					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
+					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n");
 			printSquare();
 			tmpArray = read.nextLine().split(" ");
 			if(tmpArray.length != 4){
@@ -140,8 +139,7 @@ public class DataLoading {
 			readConditions();
         } else if(area instanceof Rectangle){
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d\n" +
-					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
-					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
+					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n"); 
 			printRectangle();
 			tmpArray = read.nextLine().split(" ");
 			if(tmpArray.length != 4){
@@ -151,8 +149,7 @@ public class DataLoading {
 			readConditions();	
         } else if(area instanceof LetterL) {
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d, e, f\n" +
-					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
-					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
+					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n");
 			printLetterL();
 			tmpArray = read.nextLine().split(" ");
 			if(tmpArray.length != 6){
@@ -162,8 +159,7 @@ public class DataLoading {
 			readConditions();
         } else {
         	System.out.println("Podaj warunki brzegowe dla boków a, b, c, d, e, f, g, h\n" +
-					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n" + 
-					"przykład: warunek Von neu Manna dla y o wartości 2, wpisz vy2\n");
+					"przykład: warunek Dirichleta dla x o wartości 4, wpisz dx4\n");
 			printLetterT();
 			tmpArray = read.nextLine().split(" ");
 			if(tmpArray.length != 8){
